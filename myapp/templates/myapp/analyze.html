@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Analyse de Sentiment</title>
+    <title>Sentiment analysis</title>
 </head>
 <body>
-    <h1>Analyse de Sentiment</h1>
+    <h1>Sentiment Analysis</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -13,8 +13,8 @@
     </form>
 
     {% if sentiment is not None %}
-        <h2>Résultat de l'analyse :</h2>
-        <p>Polarity: {{ sentiment }}</p>
+        <h2>Résult of l'analyse :</h2>
+        <p>Polarity: {{ analysis }}</p>
     {% endif %}
 </body>
 </html>
