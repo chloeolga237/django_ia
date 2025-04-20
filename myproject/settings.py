@@ -10,6 +10,9 @@ DEBUG = True  # Assurez-vous que le mode DEBUG est activé pour le développemen
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # Ajoutez cette ligne
 
+# Définition de ROOT_URLCONF
+ROOT_URLCONF = 'myproject.urls'  # Remplacez 'myproject' par le nom de votre projet
+
 # Liste des applications installées
 INSTALLED_APPS = [
     'django.contrib.admin',  # Nécessaire pour l'administration
@@ -66,5 +69,7 @@ DATABASES = {
 
 # Configuration des fichiers statiques
 STATIC_URL = '/static/'  # Ajoutez cette ligne pour les fichiers statiques
+
+SECRET_KEY = 'manuella8&'  # Remplacez par une clé sécurisée
 
 # Autres configurations...

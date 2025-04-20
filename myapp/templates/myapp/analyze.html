@@ -1,20 +1,93 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sentiment analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis - Sentiment Analysis</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+            color: #343a40;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+        }
+        p.error {
+            color: red;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sentiment Analysis</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Analyser</button>
-    </form>
-
-    {% if sentiment is not None %}
-        <h2>Résult of l'analyse :</h2>
-        <p>Polarity: {{ analysis }}</p>
-    {% endif %}
+    <div class="header">
+        <h1>Sentiment Analysis</h1>
+    </div>
+    
+    <div class="content">
+        <h2>Analyze Your Text</h2>
+        <form method="POST" action="{% url 'analyze_sentiment' %}">
+            {% csrf_token %}
+            <textarea name="text" placeholder="Enter your text here..." required></textarea>
+            <br>
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>  <!-- Error message -->
+        {% endif %}
+        {% if sentiment %}
+            <div class="result">
+                <h3>Analysis Result</h3>
+                <p><strong>Polarity:</strong> {{ sentiment.polarity }}</p>
+                <p><strong>Subjectivity:</strong> {{ sentiment.subjectivity }}</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2025 Sentiment Analysis. All rights reserved.</p>
+    </div>
 </body>
 </html>

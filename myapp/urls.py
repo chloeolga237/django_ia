@@ -1,14 +1,9 @@
-# myapp/views.py
-from django.shortcuts import render
-from textblob import TextBlob  # Si vous utilisez TextBlob pour l'analyse de sentiment
+# myapp/urls.py
+from django.urls import path
+from . import views  # Assurez-vous que les vues sont importées correctement
 
-def home(request):
-    return render(request, 'myapp/home.html')  # Assurez-vous d'avoir un template 'home.html'
-
-def analyze_sentiment(request):
-    if request.method == 'POST':
-        text = request.POST.get('text')
-        analysis = TextBlob(text)
-        sentiment = analysis.sentiment
-        return render(request, 'myapp/result.html', {'sentiment': sentiment})
-    return render(request, 'myapp/analyze.html')  # Formulaire pour l'analyse
+urlpatterns = [
+    path('', views.home, name='home'),  # Page d'accueil
+    path('analyze/', views.analyze_sentiment, name='analyze_sentiment'),  # Gère l'analyse de sentiment
+    # La page de résultat n'est plus nécessaire, on affiche les résultats dans analyze.html
+]

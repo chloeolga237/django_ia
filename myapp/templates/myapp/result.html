@@ -1,2 +1,59 @@
-<h1>Résult : {{ result }}</h1>
-<a href="/">Return</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Sentiment Analysis</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+            color: #343a40;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>IA</h1>
+        <h1>Sentiment Analysis</h1>
+    </div>
+    
+    <div class="content">
+        <h2>Analysis Result</h2>
+        <p><strong>Polarity:</strong> {{ sentiment.polarity }}</p>
+        <p><strong>Subjectivity:</strong> {{ sentiment.subjectivity }}</p>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Return to Home</a>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2025 Sentiment Analysis. All rights reserved.</p>
+    </div>
+</body>
+</html>
